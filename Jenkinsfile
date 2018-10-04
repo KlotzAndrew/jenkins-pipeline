@@ -8,7 +8,7 @@ pipeline {
         }
         stage('integration tests') {
             steps {
-                sh test.sh
+                sh 'sh test.sh'
             }
         }
     }
