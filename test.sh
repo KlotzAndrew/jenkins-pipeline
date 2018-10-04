@@ -2,6 +2,6 @@
 
 echo "running integration tests!"
 
-echo "all done!"
+echo "all done yay!"
 
 exit 0
