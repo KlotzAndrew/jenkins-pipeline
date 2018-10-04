@@ -6,12 +6,12 @@ pipeline {
             parallel {
                 stage('service a') {
                     steps {
-                        sh 'sh test.sh'
+                        sh 'sh service-a/test.sh'
                     }
                 }
                 stage('service b') {
                     steps {
-                        sh 'sh test.sh'
+                        sh 'sh service-a/test.sh'
                     }
                 }
             }

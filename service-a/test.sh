@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "running integration tests!"
+echo "running service a"
 
 echo "all done!"
 
