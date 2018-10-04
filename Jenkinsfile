@@ -39,6 +39,7 @@ pipeline {
                 echo "My GIT_BRANCH is: ${env.GIT_BRANCH}"
                 echo "My GIT_PREVIOUS_SUCCESSFUL_COMMIT is: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 sh 'echo "deploying"'
+                bitbucketStatusNotify(buildState: 'SUCCESSFUL')
             }
         }
     }
