@@ -33,6 +33,11 @@ pipeline {
             }
             steps {
                 sh 'git rev-parse HEAD'
+                echo "My BRANCH_NAME is: ${env.BRANCH_NAME}"
+                echo "My CHANGE_TARGET is: ${env.CHANGE_TARGET}"
+                echo "My BRANCHis: ${env.BRANCH}"
+                echo "My GIT_BRANCH is: ${env.GIT_BRANCH}"
+                echo "My GIT_PREVIOUS_SUCCESSFUL_COMMIT is: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 sh 'echo "deploying"'
             }
         }
