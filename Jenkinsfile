@@ -5,7 +5,7 @@ pipeline {
             steps {
                 checkout scm
 
-                sh 'test.sh'
+                sh 'sh test.sh'
             }
         }
     }
