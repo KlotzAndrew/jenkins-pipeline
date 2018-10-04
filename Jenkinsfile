@@ -6,5 +6,10 @@ pipeline {
                 sh 'sh test.sh'
             }
         }
+        stage('integration tests') {
+            steps {
+                sh test.sh
+            }
+        }
     }
 }
