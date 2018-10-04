@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('initializing') {
+            steps {
+                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'INPROGRESS')
+                bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'INPROGRESS')
+            }
+        }
         stage('unit tests') {
             failFast true
             parallel {
@@ -39,7 +45,8 @@ pipeline {
                 echo "My GIT_BRANCH is: ${env.GIT_BRANCH}"
                 echo "My GIT_PREVIOUS_SUCCESSFUL_COMMIT is: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 sh 'echo "deploying"'
-                bitbucketStatusNotify(buildState: 'SUCCESSFUL')
+                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
+                bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'SUCCESSFUL')
             }
         }
     }
