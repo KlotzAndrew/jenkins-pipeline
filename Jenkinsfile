@@ -4,8 +4,6 @@ pipeline {
         stage('unit tests') {
             steps {
                 sh 'sh test.sh'
-            }
-            steps {
                 sh 'sh test.sh'
             }
         }
