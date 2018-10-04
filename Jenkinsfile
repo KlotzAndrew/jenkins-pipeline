@@ -21,5 +21,15 @@ pipeline {
                 sh 'sh test.sh'
             }
         }
+        stage('deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
+            steps {
+                sh 'echo "deploying"'
+            }
+        }
     }
 }
