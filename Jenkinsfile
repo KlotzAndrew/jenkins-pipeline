@@ -11,12 +11,6 @@ pipeline {
             failFast true
             parallel {
                 stage('service a') {
-                    if (credentials('foobar') == 'bazbaz') {
-                        sh 'echo "is equal!"'
-                    }
-                    if (credentials('foobar') != 'bazbaz') {
-                        sh 'echo "is not equal!"'
-                    }
                     steps {
                         dir("service-a") {
                             sh 'sh test.sh'
@@ -51,8 +45,9 @@ pipeline {
                 echo "My GIT_BRANCH is: ${env.GIT_BRANCH}"
                 echo "My GIT_PREVIOUS_SUCCESSFUL_COMMIT is: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 sh 'echo "deploying"'
-                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
-                bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'SUCCESSFUL')
+                exit 1
+                // bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
+                // bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'SUCCESSFUL')
             }
         }
     }
