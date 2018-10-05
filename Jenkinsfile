@@ -33,11 +33,11 @@ pipeline {
             }
         }
         stage('deploy') {
-            when {
-              expression {
-                currentBuild.result == null || currentBuild.result == 'SUCCESS'
-              }
-            }
+            // when {
+            //   expression {
+            //     currentBuild.result == null || currentBuild.result == 'SUCCESS'
+            //   }
+            // }
             steps {
                 sh 'git rev-parse HEAD'
                 echo "My BRANCH_NAME is: ${env.BRANCH_NAME}"
