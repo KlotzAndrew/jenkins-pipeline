@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('initializing') {
             steps {
-                // bitbucketStatusNotify(buildState: 'INPROGRESS')
-                bitbucketStatusNotify(
-                    buildState: 'INPROGRESS',
-                    buildKey: 'build',
-                    buildName: 'Build',
-                    repoSlug: 'jenkins-pipeline-test'
-                    // commitId: sh 'git rev-parse HEAD'
-                )
+                bitbucketStatusNotify(buildState: 'INPROGRESS')
+                // bitbucketStatusNotify(
+                //     buildState: 'INPROGRESS',
+                //     buildKey: 'build',
+                //     buildName: 'Build',
+                //     repoSlug: 'jenkins-pipeline-test'
+                //     // commitId: sh 'git rev-parse HEAD'
+                // )
             }
         }
         stage('unit tests') {
@@ -53,14 +53,14 @@ pipeline {
                 sh 'echo "deploying!"'
                 // exit 1
 
-                // bitbucketStatusNotify(buildState: 'SUCCESSFUL')
-                bitbucketStatusNotify(
-                    buildState: 'SUCCESSFUL',
-                    buildKey: 'build',
-                    buildName: 'Build',
-                    repoSlug: 'jenkins-pipeline-test'
-                    // commitId: sh 'git rev-parse HEAD'
-                )
+                bitbucketStatusNotify(buildState: 'SUCCESSFUL')
+                // bitbucketStatusNotify(
+                //     buildState: 'SUCCESSFUL',
+                //     buildKey: 'build',
+                //     buildName: 'Build',
+                //     repoSlug: 'jenkins-pipeline-test'
+                //     // commitId: sh 'git rev-parse HEAD'
+                // )
             }
         }
     }
