@@ -12,13 +12,13 @@ pipeline {
             parallel {
                 stage('service a') {
                     steps {
+                        if (credentials('foobar') == 'bazbaz') {
+                            sh 'echo "is equal!"'
+                        }
+                        if (credentials('foobar') != 'bazbaz') {
+                            sh 'echo "is not equal!"'
+                        }
                         dir("service-a") {
-                            if (credentials('foobar') == 'bazbaz') {
-                                sh 'echo "is equal!"'
-                            }
-                            if (credentials('foobar') != 'bazbaz') {
-                                sh 'echo "is not equal!"'
-                            }
                             sh 'sh test.sh'
                         }
                     }
