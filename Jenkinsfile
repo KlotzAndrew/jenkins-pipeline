@@ -3,9 +3,14 @@ pipeline {
     stages {
         stage('initializing') {
             steps {
-                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'INPROGRESS')
-                bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'INPROGRESS')
-                bitbucketStatusNotify(buildName: 'ServiceC', buildState: 'INPROGRESS')
+                bitbucketStatusNotify(buildState: 'INPROGRESS')
+                // bitbucketStatusNotify(
+                //     buildState: 'INPROGRESS',
+                //     buildKey: 'build',
+                //     buildName: 'Build',
+                //     repoSlug: 'jenkins-pipeline-test',
+                //     commitId: sh 'git rev-parse HEAD'
+                // )
             }
         }
         stage('unit tests') {
@@ -33,11 +38,11 @@ pipeline {
             }
         }
         stage('deploy') {
-            when {
-              expression {
-                currentBuild.result == null || currentBuild.result == 'SUCCESS'
-              }
-            }
+            // when {
+            //   expression {
+            //     currentBuild.result == null || currentBuild.result == 'SUCCESS'
+            //   }
+            // }
             steps {
                 sh 'git rev-parse HEAD'
                 echo "My BRANCH_NAME is: ${env.BRANCH_NAME}"
@@ -46,10 +51,16 @@ pipeline {
                 echo "My GIT_BRANCH is: ${env.GIT_BRANCH}"
                 echo "My GIT_PREVIOUS_SUCCESSFUL_COMMIT is: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 sh 'echo "deploying"'
-                exit 1
-                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
-                // bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'SUCCESSFUL')
-                bitbucketStatusNotify(buildName: 'ServiceC', buildState: 'SUCCESSFUL')
+                // exit 1
+
+                bitbucketStatusNotify(buildState: 'SUCCESSFUL')
+                // bitbucketStatusNotify(
+                //     buildState: 'SUCCESSFUL',
+                //     buildKey: 'build',
+                //     buildName: 'Build',
+                //     repoSlug: 'jenkins-pipeline-test',
+                //     commitId: sh 'git rev-parse HEAD'
+                // )
             }
         }
     }
