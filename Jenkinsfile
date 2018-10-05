@@ -5,6 +5,7 @@ pipeline {
             steps {
                 bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'INPROGRESS')
                 bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'INPROGRESS')
+                bitbucketStatusNotify(buildName: 'ServiceC', buildState: 'INPROGRESS')
             }
         }
         stage('unit tests') {
@@ -46,8 +47,9 @@ pipeline {
                 echo "My GIT_PREVIOUS_SUCCESSFUL_COMMIT is: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
                 sh 'echo "deploying"'
                 exit 1
-                // bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
+                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
                 // bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'SUCCESSFUL')
+                bitbucketStatusNotify(buildName: 'ServiceC', buildState: 'SUCCESSFUL')
             }
         }
     }
