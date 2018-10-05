@@ -48,7 +48,7 @@ pipeline {
                 sh 'echo "deploying"'
                 // exit 1
 
-                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'SUCCESSFUL')
+                bitbucketStatusNotify(buildName: 'ServiceA', buildState: 'FAILED')
                 // bitbucketStatusNotify(buildName: 'ServiceB', buildState: 'SUCCESSFUL')
                 bitbucketStatusNotify(buildName: 'ServiceC', buildState: 'SUCCESSFUL')
             }
