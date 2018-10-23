@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('initializing') {
             steps {
-                bitbucketStatusNotify(buildState: 'INPROGRESS')
+                // bitbucketStatusNotify(buildState: 'INPROGRESS')
                 // bitbucketStatusNotify(
                 //     buildState: 'INPROGRESS',
                 //     buildKey: 'build',
@@ -53,7 +53,7 @@ pipeline {
                 sh 'echo "deploying!!"'
                 // exit 1
 
-                bitbucketStatusNotify(buildState: 'SUCCESSFUL')
+                // bitbucketStatusNotify(buildState: 'SUCCESSFUL')
                 // bitbucketStatusNotify(
                 //     buildState: 'SUCCESSFUL',
                 //     buildKey: 'build',
