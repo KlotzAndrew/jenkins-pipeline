@@ -11,6 +11,7 @@ pipeline {
                 //     repoSlug: 'jenkins-pipeline-test'
                 //     // commitId: sh 'git rev-parse HEAD'
                 // )
+                echo "Starting build"
             }
         }
         stage('unit tests') {
